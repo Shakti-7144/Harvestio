@@ -1,0 +1,30 @@
+{
+  "name": "harvestiq",
+  "version": "1.0.0",
+  "description": "AI-powered crop quality assessment and price prediction using Google's Gemini AI",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "start": "node script.js",
+    "dev": "node script.js"
+  },
+  "keywords": [
+    "crop",
+    "ai",
+    "gemini",
+    "google-ai",
+    "assessment",
+    "express",
+    "web-app",
+    "agriculture"
+  ],
+  "author": "HarvestIQ Team",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

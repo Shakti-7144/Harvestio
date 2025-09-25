@@ -1,0 +1,324 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HarvestIQ 🌱 – AI Powered Crop Quality & Price Detection</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Landing Page -->
+  <div id="landing-page" class="landing-page">
+    <header class="header">
+      <div class="logo">HarvestIQ 🌱</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <div class="language-switcher">
+          <button id="lang-en" class="lang-btn active">EN</button>
+          <button id="lang-hi" class="lang-btn">हिं</button>
+        </div>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title typewriter">HarvestIQ 🌱</h1>
+          <h2 class="hero-subtitle">AI Powered Crop Quality & Price Detection</h2>
+          <p class="hero-description">Upload your crop → Get instant quality analysis, disease detection, storage tips, and market price.</p>
+          <button id="get-started" class="cta-button" title="Start analyzing your crops with AI">Get Started</button>
+        </div>
+        <div class="hero-illustration">
+          <div class="floating-icons">
+            <span class="icon">🌾</span>
+            <span class="icon">🍎</span>
+            <span class="icon">🛡️</span>
+            <span class="icon">💰</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2 class="section-title">Why Choose HarvestIQ?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🍎</div>
+            <h3>Crop Quality</h3>
+            <p>AI-powered analysis of color, size, and freshness</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Disease Detection</h3>
+            <p>Identify diseases and pests with confidence scores</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">❄️</div>
+            <h3>Storage Advice</h3>
+            <p>Get personalized storage and preservation tips</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Price Estimation</h3>
+            <p>Real-time market prices based on quality</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+      <p>&copy; 2024 HarvestIQ. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Main Analysis Page -->
+  <div id="analysis-page" class="analysis-page" style="display: none;">
+    <div class="container">
+      <div class="upload-section">
+        <div class="upload-area" id="upload-area">
+          <div class="upload-content">
+            <div class="upload-icon">📸</div>
+            <h3>Upload Your Crop Image</h3>
+            <p>Drag and drop your crop image here or click to browse</p>
+            <div class="upload-instructions">
+              <div class="instruction-item">
+                <span class="instruction-icon">📁</span>
+                <div>
+                  <strong>Accepted formats:</strong> JPG, PNG, GIF
+                  <span class="max-size">(max 10MB)</span>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <span class="instruction-icon">💡</span>
+                <div>
+                  <strong>Recommended:</strong> Clear, well-lit images
+                  <span class="quality-tip">for best AI analysis results</span>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <span class="instruction-icon">⚡</span>
+                <div>
+                  <strong>Processing:</strong> Instant analysis
+                  <span class="speed-tip">with real-time feedback</span>
+                </div>
+              </div>
+            </div>
+            <input type="file" id="cropImage" accept="image/*" />
+          </div>
+          <div id="uploadProgress" class="upload-progress" style="display: none;">
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-icon">📤</span>
+                <span id="progressText">Uploading image...</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-details">
+                <span id="progressPercent">0%</span>
+                <span id="uploadSpeed">0 KB/s</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="imagePreview" class="image-preview">
+          <div class="preview-placeholder">
+            <span class="preview-icon">📷</span>
+            <p>Image preview will appear here</p>
+            <div class="preview-info">
+              <span class="preview-tip">High-quality images ensure accurate crop analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="assess" class="assess-button" disabled>
+        <span class="button-icon">🔍</span>
+        <span class="button-text">Assess Crop Quality & Price</span>
+        <div class="button-shine"></div>
+      </button>
+
+      <div id="result" class="results-container">
+        <div id="loading" class="loading-card" style="display: none;">
+          <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>🔍 Analyzing your crop... 🌱</p>
+          </div>
+        </div>
+
+        <div id="crop-info" class="results-grid" style="display: none;">
+          <div class="result-card quality-card">
+            <div class="card-header">
+              <span class="card-icon">🍎</span>
+              <h3>Crop Quality</h3>
+            </div>
+            <div id="crop-details" class="card-content"></div>
+            <div id="quality-badge" class="quality-badge"></div>
+          </div>
+
+          <div class="result-card disease-card">
+            <div class="card-header">
+              <span class="card-icon">🛡️</span>
+              <h3>Disease & Pest Detection</h3>
+            </div>
+            <div id="disease-info" class="card-content"></div>
+          </div>
+
+          <div class="result-card storage-card">
+            <div class="card-header">
+              <span class="card-icon">❄️</span>
+              <h3>Storage & Preservation</h3>
+            </div>
+            <div id="storage-info" class="card-content"></div>
+          </div>
+
+          <div class="result-card price-card">
+            <div class="card-header">
+              <span class="card-icon">💰</span>
+              <h3>Price Information</h3>
+            </div>
+            <div id="price-info" class="card-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <button id="download-report" class="download-button" style="display: none;">
+        <span class="button-icon">📄</span>
+        Download Report
+      </button>
+
+      <div id="recent-assessments" class="recent-assessments">
+        <div class="recent-header">
+          <div class="recent-title">
+            <span class="recent-icon">🕒</span>
+            <h3>Recent Assessments</h3>
+            <span class="recent-count" id="recent-count">(0)</span>
+          </div>
+          <div class="recent-controls">
+            <button id="clear-recent" class="clear-btn" title="Clear History">
+              <span>🗑️</span>
+            </button>
+            <button id="toggle-recent" class="toggle-btn" title="Toggle History">
+              <span>▼</span>
+            </button>
+          </div>
+        </div>
+        <div id="recent-list" class="recent-list">
+          <div class="no-recent">
+            <span class="no-recent-icon">📋</span>
+            <p>No recent assessments yet.</p>
+            <span class="no-recent-tip">Upload and analyze crops to see history here</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="back-to-home" class="back-button">
+          <span class="button-icon">🏠</span>
+          <span class="button-text">Back to Home</span>
+          <div class="button-shine"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language Data -->
+  <script id="language-data" type="application/json">
+  {
+    "en": {
+      "heroTitle": "HarvestIQ 🌱",
+      "heroSubtitle": "AI Powered Crop Quality & Price Detection",
+      "heroDescription": "Upload your crop → Get instant quality analysis, disease detection, storage tips, and market price.",
+      "getStarted": "Get Started",
+      "about": "About",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "copyright": "© 2024 HarvestIQ. All rights reserved.",
+      "whyChoose": "Why Choose HarvestIQ?",
+      "features": {
+        "quality": "Crop Quality",
+        "qualityDesc": "AI-powered analysis of color, size, and freshness",
+        "disease": "Disease Detection",
+        "diseaseDesc": "Identify diseases and pests with confidence scores",
+        "storage": "Storage Advice",
+        "storageDesc": "Get personalized storage and preservation tips",
+        "price": "Price Estimation",
+        "priceDesc": "Real-time market prices based on quality"
+      },
+      "uploadTitle": "Upload Your Crop Image",
+      "uploadDesc": "Drag and drop your crop image here or click to browse",
+      "assessBtn": "Assess Crop Quality & Price",
+      "backHome": "Back to Home",
+      "downloadReport": "Download Report",
+      "loading": "🔍 Analyzing your crop... 🌱",
+      "networkError": "❌ Network error",
+      "serverError": "Please make sure the server is running.",
+      "apiKeyError": "❌ API Key Error",
+      "rateLimit": "⏱️ Rate Limit",
+      "waitMessage": "Please wait a moment before trying again.",
+      "serviceOverload": "🔄 Service Overloaded",
+      "tryAgain": "Please try again in a few minutes.",
+      "priceNote": "*Prices are approximate and may vary by location and season",
+      "priceUnavailable": "💰 Price information not available",
+      "priceUnavailableDesc": "This could be due to limited data in our database, AI identification issues, or quality normalization problems. Please try with a clearer image.",
+      "reportDownloaded": "Report downloaded successfully!",
+      "selectImage": "Please select an image file."
+    },
+    "hi": {
+      "heroTitle": "HarvestIQ 🌱",
+      "heroSubtitle": "एआई संचालित फसल गुणवत्ता और मूल्य निर्धारण",
+      "heroDescription": "अपनी फसल अपलोड करें → तत्काल गुणवत्ता विश्लेषण, रोग का पता लगाना, भंडारण युक्तियाँ और बाजार मूल्य प्राप्त करें।",
+      "getStarted": "शुरू करें",
+      "about": "हमारे बारे में",
+      "contact": "संपर्क",
+      "privacy": "गोपनीयता",
+      "copyright": "© 2024 HarvestIQ. सभी अधिकार सुरक्षित।",
+      "whyChoose": "HarvestIQ क्यों चुनें?",
+      "features": {
+        "quality": "फसल गुणवत्ता",
+        "qualityDesc": "रंग, आकार और ताजगी का एआई-संचालित विश्लेषण",
+        "disease": "रोग का पता लगाना",
+        "diseaseDesc": "विश्वास स्कोर के साथ रोगों और कीटों की पहचान",
+        "storage": "भंडारण सलाह",
+        "storageDesc": "व्यक्तिगत भंडारण और संरक्षण युक्तियाँ प्राप्त करें",
+        "price": "मूल्य अनुमान",
+        "priceDesc": "गुणवत्ता के आधार पर वास्तविक समय बाजार मूल्य"
+      },
+      "uploadTitle": "अपनी फसल की छवि अपलोड करें",
+      "uploadDesc": "अपनी फसल की छवि को यहां खींचें और छोड़ें या ब्राउज़ करने के लिए क्लिक करें",
+      "assessBtn": "फसल गुणवत्ता और मूल्य का आकलन करें",
+      "backHome": "घर वापस जाएं",
+      "downloadReport": "रिपोर्ट डाउनलोड करें",
+      "loading": "🔍 आपकी फसल का विश्लेषण हो रहा है... 🌱",
+      "networkError": "❌ नेटवर्क त्रुटि",
+      "serverError": "कृपया सुनिश्चित करें कि सर्वर चल रहा है।",
+      "apiKeyError": "❌ एपीआई कुंजी त्रुटि",
+      "rateLimit": "⏱️ दर सीमा",
+      "waitMessage": "कृपया पुनः प्रयास करने से पहले कुछ क्षण प्रतीक्षा करें।",
+      "serviceOverload": "🔄 सेवा अधिभारित",
+      "tryAgain": "कृपया कुछ मिनटों में पुनः प्रयास करें।",
+      "priceNote": "*मूल्य अनुमानित हैं और स्थान और मौसम के अनुसार भिन्न हो सकते हैं",
+      "priceUnavailable": "💰 मूल्य जानकारी उपलब्ध नहीं",
+      "priceUnavailableDesc": "यह हमारे डेटाबेस में सीमित डेटा, एआई पहचान समस्याओं, या गुणवत्ता सामान्यीकरण समस्याओं के कारण हो सकता है। कृपया स्पष्ट छवि के साथ प्रयास करें।",
+      "reportDownloaded": "रिपोर्ट सफलतापूर्वक डाउनलोड की गई!",
+      "selectImage": "कृपया एक छवि फ़ाइल चुनें।"
+    }
+  }
+  </script>
+
+
+
+
+
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+Crop,Quality,Price_per_kg,Market
+Tomato,EXCELLENT,50,Local Market
+Tomato,GOOD,35,Local Market
+Tomato,POOR,20,Local Market
+Potato,EXCELLENT,25,Local Market
+Potato,GOOD,18,Local Market
+Potato,POOR,12,Local Market
+Onion,EXCELLENT,40,Local Market
+Onion,GOOD,28,Local Market
+Onion,POOR,18,Local Market
+Carrot,EXCELLENT,45,Local Market
+Carrot,GOOD,32,Local Market
+Carrot,POOR,22,Local Market
+Cabbage,EXCELLENT,30,Local Market
+Cabbage,GOOD,22,Local Market
+Cabbage,POOR,15,Local Market
+Spinach,EXCELLENT,60,Local Market
+Spinach,GOOD,42,Local Market
+Spinach,POOR,28,Local Market
+Bell Pepper,EXCELLENT,80,Local Market
+Bell Pepper,GOOD,55,Local Market
+Bell Pepper,POOR,35,Local Market
+Cauliflower,EXCELLENT,55,Local Market
+Cauliflower,GOOD,38,Local Market
+Cauliflower,POOR,25,Local Market
+Broccoli,EXCELLENT,90,Local Market
+Broccoli,GOOD,65,Local Market
+Broccoli,POOR,40,Local Market
